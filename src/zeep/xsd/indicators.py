@@ -170,9 +170,10 @@ class OrderIndicator(Indicator, list):
         else:
             values = value
 
+        primitives = ['int', 'double', 'float']
         for i, value in zip(max_occurs_iter(self.max_occurs), values):
             for name, element in self.elements_nested:
-                if name:
+                if name and name not in primitives:
                     if name in value:
                         element_value = value[name]
                     else:
